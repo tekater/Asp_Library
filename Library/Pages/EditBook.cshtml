@@ -1,0 +1,32 @@
+﻿@page
+@model Library.Pages.EditBookModel
+@{
+    ViewData["Title"] = "EditBook";
+}
+<h3 class="display-4">Edit Books</h3>
+<div class="list-group-item d-flex justify-content-between">
+    <form asp-page-handler="EditBook" method="post">
+        <div class="form-group">
+            <label>Name:</label><br>
+            <input class="text" name="name" value="@Model.LibService.MyBook.Name" />
+        </div>
+        <div class="form-group">
+            <label>Author:</label> <br>
+            <input <input class="text" name="author" value="@Model.LibService.MyBook.Author" />
+        </div>
+        <div class="form-group">
+            <label>Style:</label> <br>
+            <input class="text" name="style" value="@Model.LibService.MyBook.Style" />
+        </div>
+        <div class="form-group">
+            <label>Year:</label> <br>
+            <input class="text" name="year" value="@Model.LibService.MyBook.Year" />
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+<br>
+
+<form>
+    <button a asp-page="/Index" class="btn btn-primary">Back</button>
+</form>

@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Library";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Library</h1>
+</div>
+<h3 class="display-4">All Books</h3>
+
+<form asp-page-handler="SearchBook" method="post">
+    <div class="form-group">
+        @Html.DropDownList("select", new SelectList(new string[] {"Name", "Author", "Style", "Year"}), "All")
+        <input class="text" name="search" />
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+
+<div>
+    <form>
+        <button a asp-page="/AddBook" class="btn btn-primary">Add Book</button>
+    </form>
+<br>
+
+<table>
+    @foreach (var book in Model.libService.SearchList)
+    {  
+    <tr>
+        <td> <h4>@book.Key</h4> </td>
+        <td>
+            <form method="post">
+               <a asp-page="/DetailsBook" asp-route-name="@book.Key" class="btn btn-primary">Details Menu</a>
+            </form>
+        </td>
+        <td>     
+            <form method="post">
+               <a asp-page="/EditBook" asp-route-name="@book.Key" class="btn btn-primary">Edit Book</a>
+            </form>
+        </td>
+        <td>
+            <form asp-page-handler="DeleteBook" method="post" asp-route-name="@book.Key" onsubmit="return confirm('Sure Delete?');">
+                <button type="submit" class="btn btn-primary">Delete Book</button>
+            </form>
+        </td>
+    </tr>
+    }
+</table>
+</div>

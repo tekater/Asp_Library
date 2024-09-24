@@ -1,0 +1,29 @@
+﻿@page
+@model Library.Pages.DetailsBookModel
+@{
+    ViewData["Title"] = "DetailsBook";
+}
+<h3 class="display-4">Details Books</h3>
+<table>
+    <track>
+    <td>Name</td>
+    <td>@Model.libService.MyBook.Name</td>
+    </tr>
+    <tr>
+        <td>Author</td>
+        <td>@Model.libService.MyBook.Author</td>
+    </tr>
+    <tr>
+        <td>Style</td>
+        <td>@Model.libService.MyBook.Style</td>
+    </tr>
+    <tr>
+        <td>Year</td>
+        <td>@Model.libService.MyBook.Year</td>
+    </tr>
+</table>
+<br>
+
+<form>
+    <button a asp-page="/Index" class="btn btn-primary">Back</button>
+</form>
